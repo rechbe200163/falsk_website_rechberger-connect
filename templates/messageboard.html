@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/static/massageboard.css">
+</head>
+<body>
+    <h1>Homepage</h1>
+
+    <ul id="messages">
+    {% if Messages %}
+        <label for="searchInput"></label>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <div class="scroll-div">
+          {% for message in Messages %}
+          <li>
+            <div class="message-container">
+              <a>{{ message.message }}</a>
+              <form action="/message/{{ message.id }}" method="post" style="display:inline">
+                <button type="submit" class="delete-button">Delete</button>
+              </form>
+            </div>
+          </li>
+          {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-messages">No messages yet!</p>
+    {% endif %}
+      </ul>
+      
+      
+    <form action="/message" method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.message(placeholder='Enter your message here', size=32) }}
+        </div>
+        <div id="button">
+            {{ form.submit }}
+        </div>
+    </form>
+
+
+
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("messages");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        //add an eventlistener so that the user is able to click on the message and he will be asked to delete it from the database
+
+    </script>
+</body>
+</html>

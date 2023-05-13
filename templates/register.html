@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+
+    <h1>Melde Dich jetzt an</h1>
+
+    <form action="/register" method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </div>
+        <div>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+        </div>
+        <div>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </div>
+        <div>
+            {{ form.passwordcheck.label }}<br>
+            {{ form.passwordcheck(size=32) }}
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+    </form>
+
+    <p>oder <a href="/login">melde Dich an</a></p>
+
+    {% if form.errors %}
+        <div class="errors">
+            {% for field, errors in form.errors.items() %}
+                {% for error in errors %}
+                    <li><a>{{ field.label }} - {{ error }}</a></li>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</body>
+</html>

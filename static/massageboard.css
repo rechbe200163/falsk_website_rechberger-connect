@@ -1,0 +1,138 @@
+/* Styling for the search input field */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: rgb(184, 184, 184)
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #302e2e;
+  }
+
+#myInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+
+  li:nth-child(even) {
+    background-color: lightgray;
+  } 
+
+  li:nth-child(odd) .message-container {
+    background-color: #b4b4b4;
+  }
+
+  .no-messages {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    color: gray;    
+   }
+  
+  /* Styling for the scrollable container */
+  .scroll-div {
+    height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  
+  /* Styling for each message container */
+  .message-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styling for the delete button */
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    border-radius: 4px;
+  }
+  
+  /* Styling for the delete button on hover */
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  form div a {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  form div input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  form #button {
+    margin-top: 20px;
+  }
+  
+  form #button input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form #button input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
