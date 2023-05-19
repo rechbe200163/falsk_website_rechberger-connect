@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/static/massageboard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        $(function() {
+            $('.toggle').on('click', function() {
+                if ($('.item').hasClass('active')) {
+                    $('.item').removeClass('active');
+                } else {
+                    $('.item').addClass('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li class="logo"><a href="/">Home</a></li>
+            <li class="item"><a href="">About</a></li>
+            <li class="item"><a href="">Services</a></li>
+            <li class="item"><a href="message">Message</a></li>
+            <li class="item button"><a href="">Login</a></li>
+            <li class="item button secondary"><a href="register">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+
+    <ul id="messages">
+    {% if Messages %}
+        <label for="searchInput"></label>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <div class="scroll-div">
+          {% for message in Messages %}
+          <li>
+            <div class="message-container">
+              <a>{{ message.message }}</a>
+              <form action="/message/{{ message.id }}" method="post" style="display:inline">
+                <button type="submit" class="delete-button">Delete</button>
+              </form>
+            </div>
+          </li>
+          {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-messages">No messages yet!</p>
+    {% endif %}
+      </ul>
+      
+      
+    <form action="/message" method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.message(placeholder='Enter your message here', size=32) }}
+        </div>
+        <div id="button">
+            {{ form.submit }}
+        </div>
+    </form>
+
+
+
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("messages");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        //add an eventlistener so that the user is able to click on the message and he will be asked to delete it from the database
+
+    </script>
+</body>
+</html>

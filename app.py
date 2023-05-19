@@ -60,7 +60,7 @@ class RegistrationForm(FlaskForm):
 			raise ValidationError('Email already taken')
 
 
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/message', methods=['GET', 'POST'])
 def message():
 	form = MessageBoard()
 	if form.validate_on_submit():
